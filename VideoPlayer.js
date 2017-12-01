@@ -1,3 +1,11 @@
+/**
+ * 
+ * IMPORTANT
+ * Just changed handling fullscreen press - instead of changing
+ * resize mode it now also changes device orientation
+ * line 377 _toggleFullScreen function
+ */
+
 import React, { Component } from 'react';
 import Video from 'react-native-video';
 import {
@@ -401,12 +409,19 @@ export default class VideoPlayer extends Component {
      * isFullscreen state.
      */
     _toggleFullscreen() {
-        let state = this.state;
-        state.isFullscreen = ! state.isFullscreen;
-        state.resizeMode = state.isFullscreen === true ? 'cover' : 'contain';
-
-        this.setState( state );
-    }
+        const { isFullscreen } = this.state
+        const nextIsFullScreen = !isFullscreen
+    
+        if (nextIsFullScreen) {
+          Orientation.lockToPortrait()
+        } else {
+          Orientation.lockToLandscape()
+        }
+        this.setState({
+          resizeMode: nextIsFullScreen ? 'cover' : 'contain',
+          fullscreen: nextIsFullScreen,
+        })
+      }
 
     /**
      * Toggle playing state on <Video> component
