@@ -22,6 +22,7 @@ import {
     View,
     Text
 } from 'react-native';
+import Orientation from 'react-native-orientation';
 import _ from 'lodash';
 
 export default class VideoPlayer extends Component {
