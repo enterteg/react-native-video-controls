@@ -3,7 +3,7 @@
  * IMPORTANT
  * Just changed handling fullscreen press - instead of changing
  * resize mode it now also changes device orientation
- * line 377 _toggleFullScreen function
+ * line 412 _toggleFullScreen function
  */
 
 import React, { Component } from 'react';
@@ -420,7 +420,7 @@ export default class VideoPlayer extends Component {
         }
         this.setState({
           resizeMode: nextIsFullScreen ? 'cover' : 'contain',
-          fullscreen: nextIsFullScreen,
+          isFullscreen: nextIsFullScreen,
         })
       }
 
