@@ -414,9 +414,9 @@ export default class VideoPlayer extends Component {
         const nextIsFullScreen = !isFullscreen
     
         if (nextIsFullScreen) {
-          Orientation.lockToPortrait()
-        } else {
           Orientation.lockToLandscape()
+        } else {
+          Orientation.lockToPortrait()
         }
         this.setState({
           resizeMode: nextIsFullScreen ? 'cover' : 'contain',
